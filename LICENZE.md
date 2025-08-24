@@ -1,0 +1,1 @@
+All rights reserved. This code is provided for viewing purposes only. Copying, modification, distribution, or any use is prohibited without explicit permission of the author.
