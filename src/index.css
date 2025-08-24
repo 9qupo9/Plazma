@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Единые параметры для белых границ */
+:root {
+  --border-width: 1px;
+  --border-color: #ffffff;
+  --border-style: solid;
+}
+
+/* Адаптивные границы для разных экранов */
+@media (max-width: 640px) {
+  :root {
+    --border-width: 0px;
+    /* Тоньше на мобильных */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    --border-width: 0px;
+    /* Средняя толщина на планшетах */
+  }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --border-width: 0px;
+    /* Стандартная толщина на десктопе */
+  }
+}
+
+/* Дополнительные утилиты для ровных границ */
+.border-consistent {
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-color: var(--border-color);
+}
+
+.border-consistent-top {
+  border-top-width: var(--border-width);
+  border-top-style: var(--border-style);
+  border-top-color: var(--border-color);
+}
+
+.border-consistent-bottom {
+  border-bottom-width: var(--border-width);
+  border-bottom-style: var(--border-style);
+  border-bottom-color: var(--border-color);
+}
+
+.border-consistent-right {
+  border-right-width: var(--border-width);
+  border-right-style: var(--border-style);
+  border-right-color: var(--border-color);
+}
+
+/* Hide scrollbars globally */
+* {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  /* WebKit */
+}
+
+/* Ensure content is still scrollable */
+.scrollable {
+  overflow: auto;
+}
+
+/* Custom animations */
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: animate-in 0.5s ease-out forwards;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Enhanced focus styles */
+*:focus-visible {
+  outline: 2px solid rgb(20 184 166);
+  outline-offset: 2px;
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-animate {
+  background: linear-gradient(-45deg, #14b8a6, #06b6d4, #3b82f6, #8b5cf6);
+  background-size: 400% 400%;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Bot icon tilt animation */
+@keyframes bot-tilt {
+
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.bot-tilt {
+  animation: bot-tilt 4s ease-in-out infinite;
+}
+
+/* Force text wrapping for chat messages */
+.chat-message-content {
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+  hyphens: auto !important;
+  white-space: pre-wrap !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.chat-message-content * {
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+  max-width: 100% !important;
+}
